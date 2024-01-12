@@ -3,39 +3,39 @@ const Trade = require('./Trade');
 const Item = require('./Item');
 
 User.hasMany(Trade, {
-    foreignKey: 'user_id',
+    foreignKey: 'offeredByUserId',
     onDelete: 'CASCADE'
 });
 
 Trade.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'offeredByUserId'
 });
 
 User.hasMany(Trade, {
-    foreignKey: 'recipient_id',
+    foreignKey: 'requestedByUserId',
     onDelete: 'CASCADE'
 });
 
 Trade.belongsTo(User, {
-    foreignKey: 'recipient_id'
+    foreignKey: 'requestedByUserId'
 });
 
 Item.hasMany(Trade, {
-    foreignKey: 'offer_item',
+    foreignKey: 'offeredItemId',
     onDelete: 'CASCADE'
 }); 
 
 Trade.belongsTo(Item, {
-    foreignKey: 'exchange_item'
+    foreignKey: 'offeredItemId'
 });
 
 Item.hasMany(Trade, {
-    foreignKey: 'exchange_item',
+    foreignKey: 'requestedItemId',
     onDelete: 'CASCADE'
 }); 
 
 Trade.belongsTo(Item, {
-    foreignKey: 'exchange_item'
+    foreignKey: 'requestedItemId'
 });
 
-module.exports = { User }
+module.exports = { User, Item, Trade }
