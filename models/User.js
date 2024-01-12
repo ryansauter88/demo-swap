@@ -3,7 +3,7 @@ const sequelize = require('../db/config');
 
 class User extends Model {}
 
-userInfo.init({
+User.init({
     fullName: {
         type: DataTypes.STRING,
         allowNull: false
