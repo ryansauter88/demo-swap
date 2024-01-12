@@ -1,0 +1,1 @@
+config.json is used for running migrations and seeds, using Sequelize CLI.
