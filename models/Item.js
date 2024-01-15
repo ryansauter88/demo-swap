@@ -27,6 +27,7 @@ Item.init({
     // IMG FILENAME GOES HERE
 }, {
     sequelize,
+    freezeTableName: true,
     modelName: 'item',
     timestamps: true
 });

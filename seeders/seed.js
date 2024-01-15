@@ -3,6 +3,7 @@ const { Item, User, Trade } = require("../models")
 
 const users = [
     { fullName: 'John Doe', email: 'john@example.com', password: 'password123', steamId: 'JohnD123', createdAt: new Date(), updatedAt: new Date() },
+    { fullName: 'Your Mom', email: 'bomb@yourmom.com', password: 'password123', steamId: 'gottemGGs', createdAt: new Date(), updatedAt: new Date() }
 ];
 
 const items = [
@@ -41,7 +42,6 @@ const seedDatabase = async () => {
         individualHooks: true,
         returning: true
     })
-
 
     process.exit()
 }
