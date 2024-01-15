@@ -1,6 +1,17 @@
 const router = require('express').Router();
-const { Trade } = require('../../models');
+const { Trade, Item } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/:id', withAuth, async (req, res) => {
+    try {
+        const newTrade = await Trade.findByPk(req.params.id, {
+            include: [{ model: Item}]
+        });
+        res.status(200).json(newTrade);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
 
 // when auth function is made, put it here before the async call as a param
 router.post('/', withAuth, async (req, res) => {
