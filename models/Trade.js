@@ -43,7 +43,7 @@ Trade.init({
         type: DataTypes.STRING,
         defaultValue: 'pending',
         validate: {
-            isIn: [['pending', 'completed', 'cancelled']]
+            isIn: [['pending', 'completed', 'cancelled', 'counter offer']]
         }
     }
 }, {

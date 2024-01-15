@@ -22,10 +22,10 @@ router.put('/:id', withAuth, async (req, res) => {
             {
               // All the fields you can update and the data attached to the request body.
               status: req.body.status,
-              offer_item: req.body.offer_item,
-              offer_amt: req.body.offer_amt,
-              exchange_item: req.body.exchange_item,
-              exchange_amt: req.body.exchange_amt,
+              offeredItemId: req.body.offeredItemId,
+              offeredItemAmt: req.body.offeredItemAmt,
+              requestedItemId: req.body.requestedItemId,
+              requestedItemAmt: req.body.requestedItemAmt,
             },
             {
               // Gets the trade based on the id given in the request parameters
