@@ -13,7 +13,7 @@ Trade.init({
     },
     offeredItemId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Items', key: 'id' },
+        references: { model: 'item', key: 'id' },
         allowNull: true
     },
     offeredItemAmt: {
@@ -22,7 +22,7 @@ Trade.init({
     },
     requestedItemId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Items', key: 'id' },
+        references: { model: 'item', key: 'id' },
         allowNull: true
     },
     requestedItemAmt: {
@@ -31,12 +31,12 @@ Trade.init({
     },
     offeredByUserId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Users', key: 'id' },
+        references: { model: 'user', key: 'id' },
         allowNull: true
     },
     requestedByUserId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Users', key: 'id' },
+        references: { model: 'user', key: 'id' },
         allowNull: true
     },
     status: {
@@ -48,6 +48,7 @@ Trade.init({
     }
 }, {
     sequelize,
+    freezeTableName: true,
     modelName: 'trade',
     timestamps: true
 });

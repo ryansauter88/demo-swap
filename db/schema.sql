@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS demoSwap_db;
-CREATE DATABASE demoSwap_db;
+DROP DATABASE IF EXISTS demoswaps_db;
+CREATE DATABASE demoswaps_db;

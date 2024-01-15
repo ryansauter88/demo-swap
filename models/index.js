@@ -4,16 +4,16 @@ const Item = require('./Item');
 
 User.hasMany(Trade, {
     foreignKey: 'offeredByUserId',
-    onDelete: 'CASCADE'
+    onDelete: 'SET NULL'
 });
 
 Trade.belongsTo(User, {
-    foreignKey: 'offeredByUserId'
+    foreignKey: 'offeredByUserId',
 });
 
 User.hasMany(Trade, {
     foreignKey: 'requestedByUserId',
-    onDelete: 'CASCADE'
+    onDelete: 'SET NULL'
 });
 
 Trade.belongsTo(User, {
@@ -22,7 +22,7 @@ Trade.belongsTo(User, {
 
 Item.hasMany(Trade, {
     foreignKey: 'offeredItemId',
-    onDelete: 'CASCADE'
+    onDelete: 'SET NULL'
 }); 
 
 Trade.belongsTo(Item, {
@@ -31,7 +31,7 @@ Trade.belongsTo(Item, {
 
 Item.hasMany(Trade, {
     foreignKey: 'requestedItemId',
-    onDelete: 'CASCADE'
+    onDelete: 'SET NULL'
 }); 
 
 Trade.belongsTo(Item, {
