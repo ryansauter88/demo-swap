@@ -1,14 +1,19 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
 const { User, Trade } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/:id', withAuth, async (req, res) => {
   try {
       const newUser = await User.findByPk(req.params.id, {
-        include: [{ model: Trade}]
+        include: [
+          { model: Trade, as: 'offers', where: {id: sequelize.col('User.id')}},
+          { model: Trade, as: 'requests', where: {id: sequelize.col('User.id')}}
+        ]
       });
       res.status(200).json(newUser);
   } catch (err) {
+    console.log(err);
       res.status(400).json(err);
   }
 })

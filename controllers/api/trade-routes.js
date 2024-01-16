@@ -1,11 +1,17 @@
 const router = require('express').Router();
-const { Trade, Item } = require('../../models');
+const sequelize = require('../../config/connection');
+const { Trade, Item, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const newTrade = await Trade.findByPk(req.params.id, {
-            include: [{ model: Item}]
+            include: [
+                { model: Item, as: 'offeredItem', where: {offeredItemId: sequelize.col('Trade.id')}},
+                { model: Item, as: 'requestedItem', where: {requestedItemId: sequelize.col('Trade.id')}},
+                { model: User, as: 'offerUser', where: {offeredByUserId: sequelize.col('Trade.id')}},
+                { model: User, as: 'requestUser', where: {requestedByUserId: sequelize.col('Trade.id')}}
+            ]
         });
         res.status(200).json(newTrade);
     } catch (err) {
