@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const { User, Trade } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
       const newUser = await User.findByPk(req.params.id, {
         include: [
@@ -20,15 +20,19 @@ router.get('/:id', withAuth, async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
+    console.log(req.body);
     const userData = await User.create(req.body);
 
+    console.log(userData);
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
+      console.log(userData);
       res.status(200).json(userData);
     });
   } catch (err) {
+    console.error(err)
     res.status(400).json(err);
   }
 });
