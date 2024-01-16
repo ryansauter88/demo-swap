@@ -15,11 +15,12 @@ body {
     top: 280px;
     left: 200px;
   }
+  
 
   .bubble {
     position: relative;
     display: inline-block;
-    left: 25rem;
+    left: 35rem;
     top: 200px;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
@@ -58,4 +59,22 @@ body {
     left: -8px;
     background: white;
     box-shadow: -4px -4px #fff, -4px 0 #fff, -8px 0 #fff, 0 -8px #fff, -4px 4px #000, -8px 4px #000, -12px 4px #000, -16px 4px #000, -12px 0 #000, -8px -4px #000, -4px -8px #000, 0 -4px #fff;
+  }
+
+  @media (max-width: 1100px) {
+    #demo {
+      width: 40vw;
+      position: relative;
+      left: 0;
+      top: 5vh;
+    }
+    .bubble {
+      width: 40vw;
+      left: 0;
+      top: 10vh;
+    }
+    .bubble.grow {
+      font-size: 2vw;
+      width: 40vw;
+    }
   }
