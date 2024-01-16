@@ -1,4 +1,5 @@
 const loginForm = document.querySelector('.login-container form');
+const registerForm = document.querySelector('.registration-container form');
 
 const loginFormHandler = async (event: Event): Promise<void> => {
     event.preventDefault();
@@ -22,7 +23,7 @@ const loginFormHandler = async (event: Event): Promise<void> => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
         } else {
             alert('Failed to log in');
         }
@@ -42,25 +43,31 @@ const signupFormHandler = async (event: Event): Promise<void> => {
     const passwordInput = document.querySelector('#password-signup') as HTMLInputElement;
     const steamIdInput = document.querySelector('#steamId-signup') as HTMLInputElement;
 
-    const name = nameInput.value.trim();
+    const fullName = nameInput.value.trim();
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
     const steamId = steamIdInput.value.trim();
 
-    if (name && email && password) {
+    console.log(fullName);
+
+    if (fullName && email && password) {
         const response = await fetch('/api/users', {
             method: 'POST',
-            body: JSON.stringify({ name, email, password, steamId }),
+            body: JSON.stringify({ fullName, email, password, steamId }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
     }
 };
+
+if (registerForm) {
+    registerForm.addEventListener('submit', signupFormHandler);
+}
 
 document
     .querySelector('.login-form')
