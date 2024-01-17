@@ -47,8 +47,8 @@ h1 {
 
     width: 22.2rem;
     position: relative;
-    top: 40%; /* Keep the top position */
-    left: 85%; /* Keep the left position */
+    top: 30%; /* Keep the top position */
+    left: 20%;
     transform: translate(-50%, -50%);
     z-index: 99;
     /* Keep the rest of the styles as they are */
@@ -248,7 +248,7 @@ h1 {
     background-color: white;
 }
 
-#imageBox1,
+/* #imageBox1,
 #imageBox2 {
     top: 16%;
     position: relative;
@@ -259,21 +259,14 @@ h1 {
     right: 20%;
 }
 
-#imageBox1 {
-    right: 50%;
-}
 
 #placeholderBox2 {
     right: 5%;
 }
 
 
-#imageBox2 {
-    right: 50%;
-}
-
 #itemBeingTraded {
     position: relative;
     bottom: 80px;
     left: 10px;
-}
+} */

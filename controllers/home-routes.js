@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Trade, User } = require('../models')
+const { Trade, User, Item } = require('../models')
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -13,7 +13,28 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
-  
+
+router.get('/trade', async (req,res) => {
+  try {
+    const itemData = await Item.findAll();
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+    });
+
+    const user = userData.get({ plain: true });
+    const items = itemData.map((item) => item.get({plain:true}));
+
+    res.render('create-trade', {
+      ...user,
+      items,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+})
+
 router.get('/trade/:id', async (req, res) => {
     try {
       const tradeData = await Trade.findByPk(req.params.id, {
@@ -24,7 +45,7 @@ router.get('/trade/:id', async (req, res) => {
           },
         ],
       });
-  
+      
       const trade = tradeData.get({ plain: true });
   
       res.render('trade', {
