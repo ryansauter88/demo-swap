@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/about.css" />
     <link rel="stylesheet" href="./css/offers.css" />
+    <link rel="stylesheet" href="./css/trade.css" />
   </head>
   <body>
     <!-- Header Start -->
@@ -24,26 +25,29 @@
             </button>
             <ul class="nav__wrapper">
               <li class="nav__item"><a href="/#">Home</a></li>
-              <li class="nav__item"><a href="">Create Trades</a></li>
+              <li class="nav__item"><a href="/trade">Create Trades</a></li>
               <li class="nav__item"><a href="/offers">Current Offers</a></li>
-              <li class="nav__item"><a href="#">Trade History</a></li>
-              <li class="nav__item"><a href="/profile">profile</a></li>
-
             </ul>
           </nav>
         </div>
+        {{#if logged_in}}
+        <div class="site-header__end">
+          <a href="/profile" class="signInLink">Profile</a>
+        </div>
+        {{/if}}
+
+        {{#unless logged_in}}
         <div class="site-header__end">
           <a href="/login" class="signInLink">Sign in</a>
         </div>
+        {{/unless}}
       </div>
     </header>
     <!-- Header End -->
 
-    <!-- About Me Section Start -->
     <main>
       {{{ body }}}
     </main>
-    <!-- About Me Section End -->
 
     <script src="/js/nav.js"></script>
     <script src="/js/compiled/login.js"></script>
