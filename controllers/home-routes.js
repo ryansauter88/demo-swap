@@ -41,19 +41,27 @@ router.get('/profile', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        include: [{ model: Trade }],
+        include: [
+          { model: Trade, as: 'offers' },
+          { model: Trade, as: 'requests' }
+        ],
       });
-  
+ 
+      console.log('User Data:', userData);
       const user = userData.get({ plain: true });
-  
+
+
+  console.log('User Object:', user);
       res.render('profile', {
         ...user,
         logged_in: true
       });
     } catch (err) {
+      console.error('Error:', err);
       res.status(500).json(err);
     }
 });
+
 
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
