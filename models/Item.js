@@ -24,7 +24,7 @@ Item.init({
     rarity: { 
         type: DataTypes.STRING 
     },
-    img_filename: {
+    filename: {
         type: DataTypes.STRING
     }
 }, {
