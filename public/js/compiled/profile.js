@@ -8,49 +8,51 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const newFormHandler = (event) => __awaiter(void 0, void 0, void 0, function* () {
-    event.preventDefault();
-    const nameInput = document.querySelector('#project-name');
-    const fundingInput = document.querySelector('#project-funding');
-    const descInput = document.querySelector('#project-desc');
-    const name = nameInput.value.trim();
-    const neededFunding = fundingInput.value.trim();
-    const description = descInput.value.trim();
-    if (name && neededFunding && description) {
-        const response = yield fetch(`/api/projects`, {
-            method: 'POST',
-            body: JSON.stringify({ name, neededFunding, description }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-        if (response.ok) {
-            document.location.replace('/profile');
+const openModal = () => {
+    const modal = document.getElementById('passwordModal');
+    modal.style.display = 'block';
+};
+// Function to close the password change modal.
+const closeModal = () => {
+    const modal = document.getElementById('passwordModal');
+    modal.style.display = 'none';
+};
+// Event listeners for the modal.
+document.addEventListener('DOMContentLoaded', () => {
+    const changePasswordButton = document.getElementById('change-password-button');
+    const closeButton = document.querySelector('.close-button');
+    const passwordChangeForm = document.getElementById('passwordChangeForm');
+    changePasswordButton === null || changePasswordButton === void 0 ? void 0 : changePasswordButton.addEventListener('click', openModal);
+    closeButton === null || closeButton === void 0 ? void 0 : closeButton.addEventListener('click', closeModal);
+    passwordChangeForm === null || passwordChangeForm === void 0 ? void 0 : passwordChangeForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0, function* () {
+        event.preventDefault();
+        const newPassword = document.getElementById('new-password').value;
+        const confirmNewPassword = document.getElementById('confirm-new-password').value;
+        if (newPassword !== confirmNewPassword) {
+            alert("Passwords do not match.");
+            return;
         }
-        else {
-            alert('Failed to create project');
+        try {
+            const response = yield fetch('/api/users/change-password', {
+                method: 'POST',
+                body: JSON.stringify({ newPassword }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.ok) {
+                alert('Password successfully changed');
+                closeModal();
+            }
+            else {
+                const responseData = yield response.json();
+                alert(`Failed to change password: ${responseData.message}`);
+            }
         }
-    }
+        catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while changing the password');
+        }
+    }));
 });
-const delButtonHandler = (event) => __awaiter(void 0, void 0, void 0, function* () {
-    const target = event.target;
-    if (target && target.hasAttribute('data-id')) {
-        const id = target.getAttribute('data-id');
-        const response = yield fetch(`/api/projects/${id}`, {
-            method: 'DELETE',
-        });
-        if (response.ok) {
-            document.location.replace('/profile');
-        }
-        else {
-            alert('Failed to delete project');
-        }
-    }
-});
-const newProjectForm = document.querySelector('.new-project-form');
-if (newProjectForm) {
-    newProjectForm.addEventListener('submit', newFormHandler);
-}
-const projectList = document.querySelector('.project-list');
-if (projectList) {
-    projectList.addEventListener('click', delButtonHandler);
-}
 //# sourceMappingURL=profile.js.map

@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
+
+
+<div class="profile-container">
+    <div class="profile-column">
+        <h1>User Profile</h1>
+        <p><strong>Username:</strong> {{username}}</p>
+        <p><strong>SteamID:</strong> {{steamID}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        </div>
+        </div>
+
+        <!-- Password Change Modal -->
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Change Password</h2>
+        <form id="passwordChangeForm">
+            <input type="password" id="new-password" placeholder="New Password" required>
+            <input type="password" id="confirm-new-password" placeholder="Confirm New Password" required>
+            <button type="submit">Change Password</button>
+        </form>
+    </div>
+</div>
+
+
+       <div class="password-change">
+            <p><strong>Password:</strong> ••••••••</p>
+            <button id="change-password-button">Change Password</button>
+        </div>
+    </div>

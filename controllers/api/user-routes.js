@@ -79,4 +79,31 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Added route for changing user password.
+router.post('/change-password', withAuth, async (req, res) => {
+  try {
+      const { newPassword } = req.body;
+      const userId = req.session.user_id;
+
+
+      // Hashes the new password.
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+
+      // Update the user's password in the database.
+      await User.update({ password: hashedPassword }, {
+          where: {
+              id: userId
+          }
+      });
+
+
+      res.json({ message: 'Password successfully updated.' });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error updating password.' });
+  }
+});
+
+
 module.exports = router;
