@@ -1,0 +1,79 @@
+:root {
+    --background: #6e6565;
+    --color: #ffffff;
+    --primary-color: #0f3460;
+    --text-color: #0f3460; /* Add a new variable for text color */
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: var(--background);
+    color: var(--text-color); /* Use the new text color variable */
+}
+
+.trade-log {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: var(--background);
+    color: var(--text-color); /* Use the new text color variable */
+}
+
+.trade-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.trade-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.item-image {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.item-info {
+    text-align: center;
+}
+
+.action {
+    font-weight: bold;
+    margin: 0;
+}
+
+.arrow {
+    font-size: 24px;
+    margin: 0 20px;
+    color: var(--primary-color);
+}
+
+.user-info {
+    position: relative;
+    left: 70%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.username,
+.team-id {
+    margin: 10px 0; /* Remove the vertical margin */
+    font-weight: bold;
+}
+
