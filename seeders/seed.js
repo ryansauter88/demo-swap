@@ -7,8 +7,12 @@ const users = [
 ];
 
 const items = [
-    { name: 'Item 1', type: 'Type A', rarity: 'Common', createdAt: new Date(), updatedAt: new Date() },
-    { name: 'Item 2', type: 'Type B', rarity: 'Rare', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'Ushanka', type: 'Hat', rarity: 'Common', filename:'/assets/ushanka.png', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'Bazaar Bargain', type: 'Weapon', rarity: 'Rare', filename:'/assets/bazaarbargain.png', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'Prince Tavishs Crown', type: 'Hat', rarity: 'Rare', filename:'/assets/princetavishcrown.png', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'Syringe Gun', type: 'Weapon', rarity: 'Common', filename:'/assets/syringegun.png', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'Pyrogoggles', type: 'Hat', rarity: 'Common', filename:'/assets/pyrogoggles.png', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'Knife', type: 'Weapon', rarity: 'Rare', filename:'/assets/butterflyknife.png', createdAt: new Date(), updatedAt: new Date() },
 ];
 
 const trades = [
@@ -47,12 +51,3 @@ const seedDatabase = async () => {
 }
 
 seedDatabase()
-// module.exports = {
-//     up: async (queryInterface, Sequelize) => {
-//         await queryInterface.bulkInsert('Users', users, {});
-//     },
-
-//     down: async (queryInterface, Sequelize) => {
-//         await queryInterface.bulkDelete('Users', null, {});
-//     }
-// };

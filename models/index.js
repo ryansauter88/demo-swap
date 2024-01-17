@@ -4,20 +4,24 @@ const Item = require('./Item');
 
 User.hasMany(Trade, {
     foreignKey: 'offeredByUserId',
-    onDelete: 'SET NULL'
+    onDelete: 'SET NULL',
+    as: 'offers'
 });
 
 Trade.belongsTo(User, {
     foreignKey: 'offeredByUserId',
+    as: 'offerUser'
 });
 
 User.hasMany(Trade, {
     foreignKey: 'requestedByUserId',
-    onDelete: 'SET NULL'
+    onDelete: 'SET NULL',
+    as: 'requests'
 });
 
 Trade.belongsTo(User, {
-    foreignKey: 'requestedByUserId'
+    foreignKey: 'requestedByUserId',
+    as: 'requestUser'
 });
 
 Item.hasMany(Trade, {
@@ -26,7 +30,8 @@ Item.hasMany(Trade, {
 }); 
 
 Trade.belongsTo(Item, {
-    foreignKey: 'offeredItemId'
+    foreignKey: 'offeredItemId',
+    as: 'offeredItem'
 });
 
 Item.hasMany(Trade, {
@@ -35,7 +40,8 @@ Item.hasMany(Trade, {
 }); 
 
 Trade.belongsTo(Item, {
-    foreignKey: 'requestedItemId'
+    foreignKey: 'requestedItemId',
+    as: 'requestedItem'
 });
 
 module.exports = { User, Item, Trade }

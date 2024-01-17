@@ -5,16 +5,16 @@
 .brand {
     font-weight: bold;
     font-size: 20px; 
-    position: relative;
-    right: 380%; 
+    /* position: relative; */
+    /* right: 380%;  */
 
 }
 
 #demoicon {
     width: 55px; 
     height: auto;
-    position: relative;
-    right: 34%; 
+    /* position: relative; */
+    /* right: 34%;  */
 }
   
   .site-header {
@@ -22,6 +22,10 @@
     background-color: #0f3460; 
 }
   
+  .site-header__start {
+    display: flex;
+    align-items: center;
+  }
   .site-header__wrapper {
     display: flex;
     justify-content: space-between;
@@ -30,8 +34,9 @@
     padding-bottom: 1rem; }
     @media (min-width: 660px) {
       .site-header__wrapper {
-        padding-top: 0;
-        padding-bottom: 0; } }
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        flex-wrap: wrap; } }
   @media (max-width: 659px) {
     .site-header__end {
       padding-right: 4rem; } }
@@ -60,12 +65,12 @@
   .nav__item a {
     display: block;
     position: relative;
-    right: 7rem;
+    /* right: 7rem; */
     padding: 1.5rem 1.5rem; }
 
     .signInLink {
         position: relative;
-        left: 15rem;
+        /* left: 15rem; */
     }
   
   .nav__toggle {
@@ -112,7 +117,7 @@
         }
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 .wrapper {
-  max-width: 1140px;
+  max-width: 100vw;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-left: auto;

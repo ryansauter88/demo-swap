@@ -23,8 +23,10 @@ Item.init({
     },
     rarity: { 
         type: DataTypes.STRING 
+    },
+    filename: {
+        type: DataTypes.STRING
     }
-    // IMG FILENAME GOES HERE
 }, {
     sequelize,
     freezeTableName: true,
