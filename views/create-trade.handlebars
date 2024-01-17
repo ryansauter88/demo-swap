@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="login-container">
+    <div class="login-container" id="trade-login">
         <div class="circle circle-one"></div> 
         <div class="form-container">
             <img src="" alt="" class="illustration" />
@@ -41,7 +41,7 @@
                     {{/each}}
                 </select>
 
-                <button class="opacity" onclick="createTrade({{user.id}})">CREATE TRADE</button>
+                <button class="opacity" onclick="createTrade()">CREATE TRADE</button>
             </form>
         </div>
         <div class="circle circle-two"></div>
@@ -51,10 +51,9 @@
 </section>
 
 <script>
-async function createTrade(userId) {
+async function createTrade() {
     let offeredItemFilename = document.getElementById('itemTrade').value;
     let requestedItemFilename = document.getElementById('itemTradeFor').value;
-
 
     const itemsArray = await fetch('api/items', {
         method: 'GET',
@@ -72,8 +71,6 @@ async function createTrade(userId) {
         }
     }
 
-    console.log(offerId)
-
     const response = await fetch('/api/trades', {
             method: 'POST',
             body: JSON.stringify(
@@ -82,7 +79,6 @@ async function createTrade(userId) {
                     offeredItemAmt: 1,
                     requestedItemId: requestId,
                     requestedItemAmt: 1,
-                    offeredByUserId: userId,
                     status: 'pending'
                 }),
             headers: { 'Content-Type': 'application/json' },

@@ -43,7 +43,7 @@ h1 {
     height: 100vh;
 }
 
-.login-container {
+#trade-login {
 
     width: 22.2rem;
     position: relative;

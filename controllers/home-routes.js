@@ -17,15 +17,10 @@ router.get('/', async (req, res) => {
 router.get('/trade', async (req,res) => {
   try {
     const itemData = await Item.findAll();
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-    });
 
-    const user = userData.get({ plain: true });
     const items = itemData.map((item) => item.get({plain:true}));
 
     res.render('create-trade', {
-      ...user,
       items,
       logged_in: req.session.logged_in
     });
@@ -96,7 +91,9 @@ router.get('/login', (req, res) => {
 
 router.get('/offers', (req, res) => {
 
-  res.render('offers');
+  res.render('offers', {
+  logged_in: req.session.logged_in
+});
 });
 
 module.exports = router;
