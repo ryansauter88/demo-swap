@@ -7,8 +7,8 @@ router.get('/:id', async (req, res) => {
   try {
       const newUser = await User.findByPk(req.params.id, {
         include: [
-          { model: Trade, as: 'offers', where: {id: sequelize.col('User.id')}},
-          { model: Trade, as: 'requests', where: {id: sequelize.col('User.id')}}
+          // { model: Trade, as: 'offers', where: {id: sequelize.col('User.id')}},
+          // { model: Trade, as: 'requests', where: {id: sequelize.col('User.id')}}
         ]
       });
       res.status(200).json(newUser);
