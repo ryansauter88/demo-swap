@@ -59,6 +59,8 @@ router.put('/:id', withAuth, async (req, res) => {
               offeredItemAmt: req.body.offeredItemAmt,
               requestedItemId: req.body.requestedItemId,
               requestedItemAmt: req.body.requestedItemAmt,
+              requestedByUserId: req.body.requestedByUserId,
+              offeredByUserId: req.body.offeredByUserId,
             },
             {
               // Gets the trade based on the id given in the request parameters
