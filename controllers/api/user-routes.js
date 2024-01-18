@@ -7,11 +7,37 @@ router.get('/:id', async (req, res) => {
   try {
       const newUser = await User.findByPk(req.params.id, {
         include: [
-          // { model: Trade, as: 'offers', where: {id: sequelize.col('User.id')}},
-          // { model: Trade, as: 'requests', where: {id: sequelize.col('User.id')}}
+          { model: Trade, as: 'offers', where: {id: sequelize.col('User.id')}},
+          { model: Trade, as: 'requests', where: {id: sequelize.col('User.id')}}
         ]
       });
-      res.status(200).json(newUser);
+
+      const noOfferUser = await User.findByPk(req.params.id, {
+        include: [
+          { model: Trade, as: 'requests', where: {id: sequelize.col('User.id')}}
+        ]
+      });
+
+      const noRequestUser = await User.findByPk(req.params.id, {
+        include: [
+          { model: Trade, as: 'offers', where: {id: sequelize.col('User.id')}}
+        ]
+      });
+      
+      const noTradeUser = await User.findByPk(req.params.id);
+
+      if (newUser != null) {
+        return res.status(200).json(newUser);
+      }
+      if (noRequestUser != null) {
+        return res.status(200).json(noRequestUser);
+      }
+      if (noOfferUser != null) {
+        return res.status(200).json(noOfferUser);
+      }
+      if (noTradeUser != null) {
+        return res.status(200).json(noTradeUser);
+      }
   } catch (err) {
     console.log(err);
       res.status(400).json(err);
