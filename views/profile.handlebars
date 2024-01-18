@@ -1,11 +1,10 @@
-<link rel="stylesheet" type="text/css" href="/css/profile.css">
 
 
 <div class="profile-container">
     <div class="profile-column">
         <h1>User Profile</h1>
-        <p><strong>Username:</strong> {{username}}</p>
-        <p><strong>SteamID:</strong> {{steamID}}</p>
+        <p><strong>Username:</strong> {{fullName}}</p>
+        <p><strong>SteamID:</strong> {{steamId}}</p>
         <p><strong>Email:</strong> {{email}}</p>
         </div>
         </div>
@@ -29,3 +28,75 @@
             <button id="change-password-button">Change Password</button>
         </div>
     </div>
+
+<section>
+    {{#if offers}}
+        {{#each offers as |offer|}}
+        <a class="trade-anchor" href="/exchange?id={{offer.id}}">
+            <div class="trade-entry">
+                <!-- Selling Section -->
+                <div class="trade-section">
+                    <div class="item-image" style="background-image: url('{{offer.offeredItem.filename}}');"></div>
+                    <div class="item-info">
+                        <p class="item-name">{{offer.offeredItem.name}}</p>
+                        <p class="action">Selling</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">➔</div>
+
+                <!-- Buying Section -->
+                <div class="trade-section">
+                    <div class="item-image" style="background-image: url('{{offer.requestedItem.filename}}');"></div>
+                    <div class="item-info">
+                        <p class="item-name">{{offer.requestedItem.name}}</p>
+                        <p class="action">Buying</p>
+                    </div>
+                </div>
+
+                        <!-- User and Steam Info -->
+                <div class="user-info">
+                    <p class="username">{{offer.offerUser.fullName}}</p>
+                    <p class="steam-id">Steam ID: {{offer.offerUser.steamId}}</p>
+                </div>
+            </div>
+        </a>
+        {{/each}}
+    {{/if}}
+    
+     {{#if requests}}
+     {{#each requests as |request|}}
+        <a class="trade-anchor" href="/exchange?id={{request.id}}">
+            <div class="trade-entry">
+                <!-- Selling Section -->
+                <div class="trade-section">
+                    <div class="item-image" style="background-image: url('{{request.requestedItem.filename}}');"></div>
+                    <div class="item-info">
+                        <p class="item-name">{{request.offeredItem.name}}</p>
+                        <p class="action">Selling</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">➔</div>
+
+                <!-- Buying Section -->
+                <div class="trade-section">
+                    <div class="item-image" style="background-image: url('{{request.requestedItem.filename}}');"></div>
+                    <div class="item-info">
+                        <p class="item-name">{{request.requestedItem.name}}</p>
+                        <p class="action">Buying</p>
+                    </div>
+                </div>
+
+                        <!-- User and Steam Info -->
+                <div class="user-info">
+                    <p class="username">{{request.offerUser.fullName}}</p>
+                    <p class="steam-id">Steam ID: {{request.offerUser.steamId}}</p>
+                </div>
+            </div>
+        </a>
+        {{/each}}
+    {{/if}}
+    </section>

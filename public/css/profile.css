@@ -16,18 +16,74 @@
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
+    text-align: center;
 }
 
 .close-button {
-    color: #aaa;
+    background-color: #0f3460;
+    color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .close-button:hover,
 .close-button:focus {
     color: black;
+    background-color: #173d72;
     text-decoration: none;
     cursor: pointer;
 }
+
+.modal-content p {
+    font-weight: bold; 
+    font-size: 16px; 
+    margin: 10px 0; 
+}
+
+#change-password-button {
+    background-color: #0f3460;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+#change-password-button:hover {
+    background-color: #173d72;
+}
+
+.profile-column p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
+    margin-bottom: 10px;
+}
+
+.trade-history h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+
+.password-change p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.trade-history th {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
