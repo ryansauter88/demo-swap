@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
 
 router.get('/trade', async (req,res) => {
   try {
-    if (req.session.logged_in) {
-      res.redirect('/profile');
+    if (!req.session.logged_in) {
+      res.redirect('/login');
       return;
   }
     
