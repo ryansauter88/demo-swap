@@ -52,7 +52,8 @@ router.get('/exchange', withAuth, async (req, res) => {
 
       res.render('exchange', {
         ...trade,
-        logged_in: req.session.logged_in
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
       });
     } catch (err) {
       res.status(500).json(err);
@@ -108,6 +109,9 @@ router.get('/offers', async (req, res) => {
     });
   
     const trades = tradeData.map((trade) => trade.get({plain:true}));
+    for (i = 0; i < trades.length; i++) {
+      trades[i].isAvailable = trades[i].status == 'pending';
+    }
 
     res.render('offers', {
       trades,
