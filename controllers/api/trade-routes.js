@@ -3,6 +3,22 @@ const sequelize = require('../../config/connection');
 const { Trade, Item, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const allTrade = await Trade.findAll({
+            include: [
+                { model: Item, as: 'offeredItem', where: {offeredItemId: sequelize.col('Trade.id')}},
+                { model: Item, as: 'requestedItem', where: {requestedItemId: sequelize.col('Trade.id')}},
+                { model: User, as: 'offerUser', where: {offeredByUserId: sequelize.col('Trade.id')}},
+                { model: User, as: 'requestUser', where: {requestedByUserId: sequelize.col('Trade.id')}}
+            ]
+        });
+        res.status(200).json(allTrade);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
+
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const newTrade = await Trade.findByPk(req.params.id, {

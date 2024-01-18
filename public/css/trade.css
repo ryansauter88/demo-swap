@@ -32,6 +32,18 @@ a {
     color: var(--color);
 }
 
+a.trade-anchor {
+    color: var(--primary-color);
+    width: 60%;
+}
+
+@media (max-width: 750px) {
+    a.trade-anchor {
+        color: var(--primary-color);
+        width: 100%;
+    }
+}
+
 h1 {
     font-size: 2.5rem;
 }
