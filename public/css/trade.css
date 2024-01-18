@@ -33,6 +33,7 @@ a {
 }
 
 a.trade-anchor {
+    display:block;
     color: var(--primary-color);
     width: 60%;
 }
@@ -61,6 +62,7 @@ h3{
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100vh;
