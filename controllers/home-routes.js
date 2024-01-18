@@ -37,20 +37,20 @@ router.get('/trade', async (req,res) => {
   }
 })
 
-router.get('/trade/:id', async (req, res) => {
+router.get('/exchange', withAuth, async (req, res) => {
     try {
-      const tradeData = await Trade.findByPk(req.params.id, {
+      const tradeData = await Trade.findByPk(req.query.id, {
         include: [
-          {
-            model: User,
-            attributes: ['name'],
-          },
-        ],
+          { model: Item, as: 'offeredItem', where: {offeredItemId: sequelize.col('Trade.id')}},
+          { model: Item, as: 'requestedItem', where: {requestedItemId: sequelize.col('Trade.id')}},
+          { model: User, as: 'offerUser', where: {offeredByUserId: sequelize.col('Trade.id')}},
+          { model: User, as: 'requestUser', where: {requestedByUserId: sequelize.col('Trade.id')}}
+        ]
       });
       
       const trade = tradeData.get({ plain: true });
-  
-      res.render('trade', {
+
+      res.render('exchange', {
         ...trade,
         logged_in: req.session.logged_in
       });

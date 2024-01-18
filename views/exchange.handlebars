@@ -1,0 +1,33 @@
+<section class="container">
+    
+    <!-- Image boxes -->
+    <!-- Add this div outside the .container section -->
+    <div>
+        <h1 id="itemBeingTraded" class="opacity">Item being traded</h1>
+        <div id="placeholderBox1" class="placeholder-image">
+            <img id="imageBox1" src="{{offeredItem.filename}}"/>
+        </div>
+    </div>
+    <h1>FOR</h1>
+    <div>
+        <h1 id="itemRequested" class="opacity">Item requested</h1>
+        <div id="placeholderBox2" class="placeholder-image">
+            <img id="imageBox2" src="{{requestedItem.filename}}"/>
+        </div>
+    </div>
+
+    <div class="login-container" id="trade-login">
+        <div class="circle circle-one"></div> 
+        <div class="form-container">
+            <img src="" alt="" class="illustration" />
+            <h1 class="opacity">Trade</h1>
+            {{!-- this area needs work --}}
+            <p class="opacity" id="itemTrade">{{offeredItem.name}}</p>
+            <p class="opacity" id="itemTradeFor">{{requestedItem.name}}</p>
+            <button class="opacity" onclick="createTrade()">ACCEPT TRADE</button>
+        </div>
+        <div class="circle circle-two"></div>
+    </div>
+    <div class="theme-btn-container"></div>
+    
+</section>
