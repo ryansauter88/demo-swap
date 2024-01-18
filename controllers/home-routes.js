@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { Trade, User, Item } = require('../models')
+const sequelize = require('../config/connection');
+const { Trade, User, Item } = require('../models');
+const { findAll } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -16,6 +18,11 @@ router.get('/', async (req, res) => {
 
 router.get('/trade', async (req,res) => {
   try {
+    if (req.session.logged_in) {
+      res.redirect('/profile');
+      return;
+  }
+    
     const itemData = await Item.findAll();
 
     const items = itemData.map((item) => item.get({plain:true}));
@@ -89,11 +96,27 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/offers', (req, res) => {
+router.get('/offers', async (req, res) => {
+  try {
+    const tradeData = await Trade.findAll({
+      include: [
+          { model: Item, as: 'offeredItem', where: {offeredItemId: sequelize.col('Trade.id')}},
+          { model: Item, as: 'requestedItem', where: {requestedItemId: sequelize.col('Trade.id')}},
+          { model: User, as: 'offerUser', where: {offeredByUserId: sequelize.col('Trade.id')}},
+          { model: User, as: 'requestUser', where: {requestedByUserId: sequelize.col('Trade.id')}}
+      ]
+    });
+  
+    const trades = tradeData.map((trade) => trade.get({plain:true}));
 
-  res.render('offers', {
-  logged_in: req.session.logged_in
-});
+    res.render('offers', {
+      trades,
+      logged_in: req.session.logged_in
+    })
+  } catch (err) {
+    console.error('Error:', err);
+      res.status(500).json(err);
+  }
 });
 
 module.exports = router;
