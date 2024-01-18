@@ -2,7 +2,7 @@
     <section class="trade-log">
     {{#if trades}}
         {{#each trades as |trade|}}
-        <a class="trade-anchor" href="/trades/{{trade.id}}">
+        <a class="trade-anchor" href="/exchange?id={{trade.id}}">
             <div class="trade-entry">
                 <!-- Selling Section -->
                 <div class="trade-section">
