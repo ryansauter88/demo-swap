@@ -1,6 +1,9 @@
 const loginForm = document.querySelector('.login-container form');
-const registerForm = document.querySelector('.registration-container form');
+
 // Selecting the login and registration form elements from the document.
+=======
+const registerForm = document.getElementById('register-form');
+
 
 // Asynchronous function to handle the login form submission.
 const loginFormHandler = async (event: Event): Promise<void> => {
