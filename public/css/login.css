@@ -59,14 +59,21 @@ h1 {
     -o-border-radius: 10px;
 }
 
+#email-login,
+#password-login {
+    color: white;
+}
+
+
+
 .login-container form input {
     display: block;
     padding: 14.5px;
     width: 100%;
     margin: 2rem 0;
-    color: var(--color);
+    /* color: var(--color); */
     outline: none;
-    background-color: #9191911f;
+    /* background-color: #9191911f; */
     border: none;
     border-radius: 5px;
     font-weight: 500;
@@ -118,6 +125,8 @@ h1 {
     -ms-transform: scale(1.02);
     -o-transform: scale(1.02);
 }
+
+
 
 .circle {
     width: 8rem;
