@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var _a, _b;
 const loginForm = document.querySelector('.login-container form');
-const registerForm = document.querySelector('.registration-container form');
+const registerForm = document.getElementById('register-form');
 const loginFormHandler = (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
     const emailInput = document.querySelector('#email-login');

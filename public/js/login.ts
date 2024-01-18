@@ -1,5 +1,5 @@
 const loginForm = document.querySelector('.login-container form');
-const registerForm = document.querySelector('.registration-container form');
+const registerForm = document.getElementById('register-form');
 
 
 const loginFormHandler = async (event: Event): Promise<void> => {
