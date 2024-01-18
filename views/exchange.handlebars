@@ -22,6 +22,14 @@
             <img src="" alt="" class="illustration" />
             <h1 class="opacity">Trade</h1>
             {{!-- this area needs work --}}
+
+            <form class="login-form">
+            <p class="opacity" id="itemTrade">{{offeredItem.name}}</p>
+            <p class="opacity" id="itemTradeFor">{{requestedItem.name}}</p>
+            <button class="opacity" onclick="createTrade()">ACCEPT TRADE</button>
+            </form>
+
+            <form class="login-form">
             <h2>Item Offered</h2>
             <h3 class="opacity" id="itemTrade">{{offeredItem.name}}</h3>
             <h2>by {{offerUser.fullName}}</h2>
@@ -29,6 +37,8 @@
             <h2>In Exchange For</h2>
             <h3 class="opacity" id="itemTradeFor">{{requestedItem.name}}</h3>
             <button id="trade-btn" class="opacity" onclick="updateTrade({{id}},{{user_id}})">ACCEPT TRADE</button>
+            </form>
+
         </div>
         <div class="circle circle-two"></div>
     </div>
