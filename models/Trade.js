@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-
+// Creates trade model. 
 class Trade extends Model {}
 
+// Initializes the properties and data types.  
 Trade.init({
     id: {
         type: DataTypes.INTEGER,

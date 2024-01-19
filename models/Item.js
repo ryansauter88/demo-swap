@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-
+// Creates the item model by extending sequelize's model class.
 class Item extends Model { }
 
+// Initializes the item model with its properties and data types.
 Item.init({
     id: {
         type: DataTypes.INTEGER,

@@ -61,11 +61,13 @@
   .nav__item a {
     display: block;
     position: relative;
+    font-weight: bold;
     /* right: 7rem; */
     padding: 1.5rem 1.5rem; }
 
     .signInLink {
         position: relative;
+        font-weight: bold;
         /* left: 15rem; */
     }
   

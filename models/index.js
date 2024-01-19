@@ -1,7 +1,9 @@
+// Import models.
 const User = require('./User');
 const Trade = require('./Trade');
 const Item = require('./Item');
 
+// Define associations, has many, belongs to relationships amongst models. 
 User.hasMany(Trade, {
     foreignKey: 'offeredByUserId',
     onDelete: 'SET NULL',
